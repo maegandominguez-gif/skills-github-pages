@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maegan · Full Strength Program · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #222222;
+    --border: #2e2e2e;
+    --text: #f0ece4;
+    --muted: #6b6560;
+    --a-color: #c8a96e;
+    --b-color: #7eb5c8;
+    --c-color: #b87eb5;
+    --green: #6aaa6a;
+    --yellow: #c8a940;
+    --red: #c86a5a;
+    --tag-bg: #252525;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f0f0fdd;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 24px;
+    height: 52px;
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-right: auto;
+  }
+
+  .nav-tab {
+    height: 52px;
+    padding: 0 20px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--text); }
+  .nav-tab[data-day="A"].active { border-bottom-color: var(--a-color); }
+  .nav-tab[data-day="B"].active { border-bottom-color: var(--b-color); }
+  .nav-tab[data-day="C"].active { border-bottom-color: var(--c-color); }
+  .nav-tab[data-day="ref"].active { border-bottom-color: var(--muted); }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 48px 24px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 7vw, 72px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── LAYOUT ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ─── DAY HEADER ─── */
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    line-height: 0.85;
+    flex-shrink: 0;
+  }
+
+  .day-A .day-letter { color: var(--a-color); }
+  .day-B .day-letter { color: var(--b-color); }
+  .day-C .day-letter { color: var(--c-color); }
+
+  .day-info { padding-top: 4px; }
+
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .day-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .day-meta-item {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .day-meta-item span { color: var(--text); }
+
+  /* ─── INTENT BOX ─── */
+  .intent {
+    background: var(--surface);
+    border-left: 3px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #b0aa9f;
+  }
+
+  .day-A .intent { border-left-color: var(--a-color); }
+  .day-B .intent { border-left-color: var(--b-color); }
+  .day-C .intent { border-left-color: var(--c-color); }
+
+  /* ─── SECTION ─── */
+  .section { margin-bottom: 40px; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* ─── WARMUP GRID ─── */
+  .warmup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+
+  .warmup-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+
+  .warmup-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .warmup-detail {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .warmup-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    background: var(--tag-bg);
+    color: var(--muted);
+  }
+
+  /* ─── EXERCISE TABLE ─── */
+  .ex-table { width: 100%; border-collapse: collapse; }
+
+  .ex-table thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ex-table th {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    padding: 0 0 8px;
+    text-align: left;
+  }
+
+  .ex-table th:last-child,
+  .ex-table th:nth-last-child(2),
+  .ex-table th:nth-last-child(3) { text-align: right; }
+
+  .ex-table tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ex-table tbody tr:last-child { border-bottom: none; }
+
+  .ex-table td {
+    padding: 16px 0;
+    vertical-align: top;
+  }
+
+  .ex-table td:last-child,
+  .ex-table td:nth-last-child(2),
+  .ex-table td:nth-last-child(3) {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .ex-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .ex-cue {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .ex-cue .hl { color: #d4c4a0; }
+
+  .band-swap {
+    font-size: 10px;
+    color: #7a9e7a;
+    margin-top: 5px;
+    letter-spacing: 0.04em;
+  }
+
+  .hip-note {
+    font-size: 10px;
+    color: var(--a-color);
+    margin-top: 5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .stat-sets { font-size: 14px; font-weight: 600; }
+  .stat-load { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .stat-rest { font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.05em; }
+
+  /* ─── SUPERSET BLOCK ─── */
+  .superset-block {
+    border: 1px solid var(--border);
+    margin: 8px 0;
+    position: relative;
+  }
+
+  .superset-block-header {
+    background: var(--surface2);
+    padding: 8px 16px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-A .superset-block-header { color: var(--a-color); }
+  .day-B .superset-block-header { color: var(--b-color); }
+  .day-C .superset-block-header { color: var(--c-color); }
+
+  .superset-inner { padding: 0 16px; }
+
+  .superset-inner .ex-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  /* ─── FINISHER ─── */
+  .finisher {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+
+  .finisher-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .day-A .finisher-label { color: var(--a-color); }
+  .day-B .finisher-label { color: var(--b-color); }
+
+  .finisher-moves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .finisher-move {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .finisher-move strong { display: block; font-weight: 600; margin-bottom: 2px; }
+  .finisher-move span { font-size: 11px; color: var(--muted); }
+
+  /* ─── RECOVERY ─── */
+  .recovery-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .recovery-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .recovery-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .recovery-text {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── OURA GRID ─── */
+  .oura-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  @media (max-width: 520px) {
+    .oura-grid { grid-template-columns: 1fr; }
+  }
+
+  .oura-cell {
+    background: var(--surface);
+    padding: 20px;
+  }
+
+  .oura-score {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .oura-score.green { color: var(--green); }
+  .oura-score.yellow { color: var(--yellow); }
+  .oura-score.red { color: var(--red); }
+
+  .oura-action {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TEMPO BOX ─── */
+  .tempo-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .tempo-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .tempo-items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tempo-item {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .tempo-item strong { color: var(--text); }
+
+  /* ─── REFERENCE PAGE ─── */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .ref-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .ref-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ref-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .ref-list li {
+    font-size: 12px;
+    color: var(--muted);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .ref-list li::before { content: '—'; position: absolute; left: 0; color: var(--border); }
+  .ref-list li strong { color: var(--text); display: block; font-weight: 500; }
+
+  .prog-phases { display: flex; flex-direction: column; gap: 12px; }
+
+  .phase {
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
+
+  .phase-weeks {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  .phase-name {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .phase-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  .phase-1 .phase-name { color: var(--green); }
+  .phase-2 .phase-name { color: var(--yellow); }
+  .phase-3 .phase-name { color: var(--red); }
+
+  /* ─── SUPP TABLE ─── */
+  .supp-table { width: 100%; border-collapse: collapse; }
+  .supp-table tr { border-bottom: 1px solid var(--border); }
+  .supp-table tr:last-child { border-bottom: none; }
+  .supp-table td { padding: 12px 0; font-size: 12px; vertical-align: top; }
+  .supp-table td:first-child { font-weight: 500; width: 38%; padding-right: 16px; }
+  .supp-table td:last-child { color: var(--muted); line-height: 1.6; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .day-letter { font-size: 64px; }
+    .day-header { gap: 14px; }
+    .nav-brand { font-size: 15px; }
+    .nav-tab { padding: 0 12px; font-size: 11px; }
+    .ex-table th:nth-last-child(2),
+    .ex-table td:nth-last-child(2) { display: none; }
+    .hero-title { font-size: 36px; }
+    .oura-score { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">MAEGAN · 2026</div>
+  <button class="nav-tab active" data-day="A" onclick="showDay('A')">Day A</button>
+  <button class="nav-tab" data-day="B" onclick="showDay('B')">Day B</button>
+  <button class="nav-tab" data-day="C" onclick="showDay('C')">Day C</button>
+  <button class="nav-tab" data-day="ref" onclick="showDay('ref')">Reference</button>
+</nav>
+
+<!-- HERO (shown on Day A load) -->
+<div class="hero" id="hero">
+  <div class="hero-eyebrow">Garage Strength Program · 3-Day Split · June 2026</div>
+  <h1 class="hero-title">Strength &amp; Definition</h1>
+  <div class="hero-pills">
+    <span class="pill">CF-L1 · 15 Years</span>
+    <span class="pill">200HR RYT</span>
+    <span class="pill">FAI + Labral Repair · R Hip · 2017</span>
+    <span class="pill">GLP-1 Protocol</span>
+    <span class="pill">Oura Readiness Governed</span>
+    <span class="pill">−37 lb Since Oct 2024</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     DAY A — GLUTES & POSTERIOR CHAIN
+════════════════════════════════════════ -->
+<div class="page active day-A" id="page-A">
+<div class="container">
+
+  <div class="day-header">
+    <div class="day-letter">A</div>
+    <div class="day-info">
+      <div class="day-title">Glutes &amp; Posterior Chain</div>
+      <div class="day-meta">
+        <div class="day-meta-item">Duration <span>~50 min</span></div>
+        <div class="day-meta-item">Focus <span>Glute Hypertrophy</span></div>
+        <div class="day-meta-item">Priority <span>Asymmetry Correction</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intent">
+    Hip thrusts and RDLs are the two movements that will drive the majority of visible glute change. Everything else is accessory. Progressive overload above all else — beat last session's performance in at least one lift. Right side first on every unilateral movement, every set, every time.
+  </div>
+
+  <!-- WARMUP -->
+  <div class="section">
+    <div class="section-label">Warm-Up · 8 min · Do Not Skip</div>
+    <div class="warmup-grid">
+      <div class="warmup-card">
+        <div class="warmup-badge">2×12</div>
+        <div class="warmup-name">Glute Bridge March (BW)</div>
+        <div class="warmup-detail">Neurological activation before loading. Low back flat, posterior pelvic tilt.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">10 each</div>
+        <div class="warmup-name">90/90 Hip Switches</div>
+        <div class="warmup-detail">Hip surgery awareness — move within comfortable range only. Assess asymmetry side to side. No forcing.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">2×8 · 25 lb KB</div>
+        <div class="warmup-name">KB Romanian Deadlift</div>
+        <div class="warmup-detail">Intentionally light — you're grooving the pattern, not loading it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIMARY COMPOUND -->
+  <div class="section">
+    <div class="section-label">Primary Compound · 4 Sets Each</div>
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets × Reps</th>
+          <th>Load</th>
+          <th>Rest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">Barbell Hip Thrust</div>
+            <div class="ex-cue">Your #1 glute builder. Full lockout, <span class="hl">1-sec pause at peak</span>. Drive load up weekly — this is the movement to own. Bench under shoulder blades, bar padded across hips.</div>
+          </td>
+          <td><div class="stat-sets">4 × 10</div></td>
+          <td><div class="stat-load">63–93 lb</div></td>
+          <td><div class="stat-rest">90 sec</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ex-name">Barbell Romanian Deadlift</div>
+            <div class="ex-cue">Bar tracks close to legs, soft knee, hinge deep. <span class="hl">Feel hamstring load before initiating return.</span> This is a hip hinge, not a squat.</div>
+          </td>
+          <td><div class="stat-sets">4 × 10</div></td>
+          <td><div class="stat-load">63–93 lb</div></td>
+          <td><div class="stat-rest">90 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- UNILATERAL -->
+  <div class="section">
+    <div class="section-label">Unilateral Work · Asymmetry Priority · Right Side First Every Set</div>
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets × Reps</th>
+          <th>Load</th>
+          <th>Rest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">Single-Leg Romanian Deadlift (KB)</div>
+            <div class="ex-cue"><span class="hl">Right side first every set. 3-count eccentric.</span> Ipsilateral KB hold — same hand as working leg. This is your InBody asymmetry correction exercise. The gap is closing — keep the work consistent.</div>
+            <div class="hip-note">↳ InBody asymmetry correction — track RPE difference side to side each session</div>
+          </td>
+          <td><div class="stat-sets">3 × 10 each</div></td>
+          <td><div class="stat-load">25–35 lb KB</div></td>
+          <td><div class="stat-rest">75 sec</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ex-name">Dumbbell Bulgarian Split Squat</div>
+            <div class="ex-cue">Rear foot on bench. <span class="hl">Right leg forward first.</span> Self-govern depth — no impingement. Compare RPE side to side each session. Slow eccentric.</div>
+            <div class="hip-note">↳ FAI awareness — depth is self-governed, no forcing</div>
+          </td>
+          <td><div class="stat-sets">3 × 8 each</div></td>
+          <td><div class="stat-load">10–15 lb DBs</div></td>
+          <td><div class="stat-rest">75 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SUPERSET -->
+  <div class="section">
+    <div class="section-label">Superset · 3 Rounds · Minimal Rest Between A1 and A2</div>
+    <div class="superset-block">
+      <div class="superset-block-header">A1 → A2 → 60 sec rest · Repeat × 3</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">A1 · KB Sumo Deadlift</div>
+                <div class="ex-cue">Wide stance, toes out. Drives glute med and adductors alongside glute max. Hinge, don't squat.</div>
+              </td>
+              <td><div class="stat-sets">12 reps</div></td>
+              <td><div class="stat-load">35–53 lb KB</div></td>
+              <td><div class="stat-rest">→ A2</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">A2 · DB Glute Kickback (Bench Supported)</div>
+                <div class="ex-cue">DB tucked behind knee. <span class="hl">Full hip extension, hard squeeze at top.</span> Keep hips square to bench.</div>
+              </td>
+              <td><div class="stat-sets">15 each</div></td>
+              <td><div class="stat-load">10–15 lb DB</div></td>
+              <td><div class="stat-rest">60 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINISHER -->
+  <div class="section">
+    <div class="section-label">Day A Finisher · Readiness 85+ Only</div>
+    <div class="finisher">
+      <div class="finisher-label">Finisher</div>
+      <div class="finisher-moves">
+        <div class="finisher-move">
+          <strong>Wall Ball Squat Toss</strong>
+          <span>14 lb · 3×10 — power through the hips</span>
+        </div>
+        <div class="finisher-move">
+          <strong>BW Glute Bridge Burnout</strong>
+          <span>Abmat · 2×25 — squeeze every rep</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOVERY -->
+  <div class="section">
+    <div class="section-label">Post-Session Recovery · Non-Negotiable</div>
+    <div class="recovery-box">
+      <div class="recovery-icon">🧘</div>
+      <div>
+        <div class="recovery-title">Restorative Yoga + Pranayama · 10–15 min</div>
+        <div class="recovery-text">Legs-up-the-wall, supported bridge, supta baddha konasana. 4-7-8 breath or box breathing. This is your HRV tool — not an optional cooldown. Use it.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     DAY B — UPPER BODY & ARM DEFINITION
+════════════════════════════════════════ -->
+<div class="page day-B" id="page-B">
+<div class="container">
+
+  <div class="day-header">
+    <div class="day-letter">B</div>
+    <div class="day-info">
+      <div class="day-title">Upper Body &amp; Arm Definition</div>
+      <div class="day-meta">
+        <div class="day-meta-item">Duration <span>~45 min</span></div>
+        <div class="day-meta-item">Focus <span>Strength Foundation</span></div>
+        <div class="day-meta-item">Key <span>3-Count Eccentric on All Isolation</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intent">
+    Day B is your strength-biased upper day. Compound press and pull at heavier loads build the foundation that Day C then defines. The 3-count eccentric on curls and tricep work is non-negotiable — the eccentric is where definition is built, not the concentric.
+  </div>
+
+  <!-- WARMUP -->
+  <div class="section">
+    <div class="section-label">Warm-Up · 5 min</div>
+    <div class="warmup-grid">
+      <div class="warmup-card">
+        <div class="warmup-badge">2×10</div>
+        <div class="warmup-name">Scapular Push-Ups</div>
+        <div class="warmup-detail">Serratus activation and scapular stability before pressing. Protract and retract only — no elbow bend.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">5 each</div>
+        <div class="warmup-name">Shoulder CARs</div>
+        <div class="warmup-detail">Controlled Articular Rotations. Full shoulder ROM prep. Slow and deliberate — you know how to do this.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIMARY -->
+  <div class="section">
+    <div class="section-label">Primary Compound · Press + Pull</div>
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets × Reps</th>
+          <th>Load</th>
+          <th>Rest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">Barbell Overhead Press</div>
+            <div class="ex-cue">Strict — no leg drive. Builds shoulder caps and triceps — the two muscles most visible in arm definition. <span class="hl">Drive load weekly.</span> Bar starts at collarbone, press to full lockout.</div>
+          </td>
+          <td><div class="stat-sets">4 × 8</div></td>
+          <td><div class="stat-load">43–53 lb</div></td>
+          <td><div class="stat-rest">90 sec</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ex-name">Barbell Bent-Over Row</div>
+            <div class="ex-cue">45° hinge, pull to lower rib. Back thickness and bicep strength from the pull side. <span class="hl">Controls posterior chain fatigue from Day A.</span> Squeeze at top, controlled lower.</div>
+          </td>
+          <td><div class="stat-sets">4 × 10</div></td>
+          <td><div class="stat-load">53–73 lb</div></td>
+          <td><div class="stat-rest">90 sec</div></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ex-name">Dumbbell Bench Press</div>
+            <div class="ex-cue">Full ROM on your flat bench. Neutral or pronated grip. Chest + tricep compound to complement the press pattern. <span class="hl">3-count lower.</span></div>
+          </td>
+          <td><div class="stat-sets">3 × 12</div></td>
+          <td><div class="stat-load">15–20 lb DBs</div></td>
+          <td><div class="stat-rest">75 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SUPERSET B1/B2 -->
+  <div class="section">
+    <div class="section-label">Superset B1/B2 · Bicep + Tricep · 3 Rounds · 3-Count Eccentric on Both</div>
+    <div class="tempo-box">
+      <span class="tempo-label">Tempo</span>
+      <div class="tempo-items">
+        <div class="tempo-item"><strong>3</strong> count lower</div>
+        <div class="tempo-item"><strong>1</strong> sec pause</div>
+        <div class="tempo-item"><strong>1</strong> count lift</div>
+        <div class="tempo-item"><strong>1</strong> sec squeeze at top</div>
+      </div>
+    </div>
+    <div class="superset-block">
+      <div class="superset-block-header">B1 → B2 → 60 sec rest · Repeat × 3</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">B1 · Barbell Bicep Curl</div>
+                <div class="ex-cue"><span class="hl">3-count lower. No swing.</span> This builds the visible bicep peak — the eccentric is where the growth is. Elbows stay at sides.</div>
+              </td>
+              <td><div class="stat-sets">12 reps</div></td>
+              <td><div class="stat-load">33–43 lb</div></td>
+              <td><div class="stat-rest">→ B2</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">B2 · KB Overhead Tricep Extension</div>
+                <div class="ex-cue">25 lb KB, both hands. <span class="hl">Elbows in tight. Full lockout at top.</span> Long head activation — most visible part of the tricep. 3-count lower.</div>
+              </td>
+              <td><div class="stat-sets">15 reps</div></td>
+              <td><div class="stat-load">25 lb KB</div></td>
+              <td><div class="stat-rest">60 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPERSET C1/C2 -->
+  <div class="section">
+    <div class="section-label">Superset C1/C2 · Shoulder + Core · 3 Rounds</div>
+    <div class="superset-block">
+      <div class="superset-block-header">C1 → C2 → 60 sec rest · Repeat × 3</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">C1 · Dumbbell Lateral Raise</div>
+                <div class="ex-cue">Lead with elbow, raise to shoulder height only. <span class="hl">3-count lower.</span> Medial delt is the muscle that creates shoulder width and cap definition. No swinging.</div>
+              </td>
+              <td><div class="stat-sets">12 reps</div></td>
+              <td><div class="stat-load">10 lb DBs</div></td>
+              <td><div class="stat-rest">→ C2</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">C2 · KB Renegade Row</div>
+                <div class="ex-cue">25 lb KBs in plank. Row one side at a time. <span class="hl">Core + back + bicep.</span> Hips stay square — don't rotate to cheat the row.</div>
+              </td>
+              <td><div class="stat-sets">8 each</div></td>
+              <td><div class="stat-load">25 lb KBs</div></td>
+              <td><div class="stat-rest">60 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINISHER -->
+  <div class="section">
+    <div class="section-label">Day B Finisher · Readiness 85+ Only</div>
+    <div class="finisher">
+      <div class="finisher-label">Finisher</div>
+      <div class="finisher-moves">
+        <div class="finisher-move">
+          <strong>DB Hammer Curls</strong>
+          <span>15–20 lb · 3×10 · slow eccentric</span>
+        </div>
+        <div class="finisher-move">
+          <strong>Bench Tricep Dips</strong>
+          <span>BW · 2×15–20</span>
+        </div>
+        <div class="finisher-move">
+          <strong>Single-Arm DB Press</strong>
+          <span>15–20 lb · 2×10 each · standing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOVERY -->
+  <div class="section">
+    <div class="section-label">Post-Session Recovery · Non-Negotiable</div>
+    <div class="recovery-box">
+      <div class="recovery-icon">🧘</div>
+      <div>
+        <div class="recovery-title">Restorative Yoga + Pranayama · 10–15 min</div>
+        <div class="recovery-text">Thread the needle, supported fish, eagle arms seated. 4-7-8 breath. Non-negotiable on this program — it's part of the HRV strategy.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     DAY C — ARMS, SHOULDERS & CORE
+════════════════════════════════════════ -->
+<div class="page day-C" id="page-C">
+<div class="container">
+
+  <div class="day-header">
+    <div class="day-letter">C</div>
+    <div class="day-info">
+      <div class="day-title">Arms, Shoulders &amp; Core Definition</div>
+      <div class="day-meta">
+        <div class="day-meta-item">Duration <span>25–30 min</span></div>
+        <div class="day-meta-item">Focus <span>Definition &amp; Detail</span></div>
+        <div class="day-meta-item">Systemic Load <span>Low</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intent">
+    Day B builds the foundation — compound strength, heavier loads. Day C is where you chisel it. Higher reps, tempo-controlled isolation, shorter rest. The goal is local stimulus without systemic cost. This session should never leave you too fatigued to hit OTF or BBC the next day. No finisher — this session is the finisher.
+  </div>
+
+  <!-- WARMUP -->
+  <div class="section">
+    <div class="section-label">Warm-Up · 5 min</div>
+    <div class="warmup-grid">
+      <div class="warmup-card">
+        <div class="warmup-badge">30 sec each direction</div>
+        <div class="warmup-name">Arm Circles + Cross-Body Swings</div>
+        <div class="warmup-detail">Full shoulder range. Build heat before loading the delts.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">5 each</div>
+        <div class="warmup-name">Shoulder CARs</div>
+        <div class="warmup-detail">Same as Day B opener. Slow and deliberate through full ROM.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">2×15 · light band</div>
+        <div class="warmup-name">Band Pull-Aparts</div>
+        <div class="warmup-detail">Rear delt and external rotation prep. Until bands arrive: doorframe chest stretch 30 sec each side.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-badge">6 reps</div>
+        <div class="warmup-name">Dead Bug</div>
+        <div class="warmup-detail">Opposite arm and leg. Slow. Core activation before loading. Low back pinned to floor.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPO -->
+  <div class="section">
+    <div class="section-label">Tempo — Applies to Every Isolation Movement</div>
+    <div class="tempo-box">
+      <span class="tempo-label">Tempo Key</span>
+      <div class="tempo-items">
+        <div class="tempo-item"><strong>3</strong> count lower (eccentric)</div>
+        <div class="tempo-item"><strong>1</strong> sec pause at bottom</div>
+        <div class="tempo-item"><strong>1</strong> count lift (concentric)</div>
+        <div class="tempo-item"><strong>1</strong> sec squeeze at top</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOULDERS -->
+  <div class="section">
+    <div class="section-label">Shoulders · Medial Delt Width + Rear Delt Detail</div>
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets × Reps</th>
+          <th>Load</th>
+          <th>Rest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">DB Arnold Press — Seated on Bench</div>
+            <div class="ex-cue">Start palms facing you, rotate to palms forward as you press. Full delt sweep — front, medial, and rear all fire through the rotation. <span class="hl">3-count lower only.</span> Don't rush the eccentric.</div>
+          </td>
+          <td><div class="stat-sets">3 × 10</div></td>
+          <td><div class="stat-load">15–20 lb DBs</div></td>
+          <td><div class="stat-rest">75 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="superset-block">
+      <div class="superset-block-header">Superset S1 · 3 Rounds · S1A → S1B → 60 sec rest</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">S1A · DB Lateral Raise</div>
+                <div class="ex-cue">Lead with elbow, raise to shoulder height only. <span class="hl">3-count lower, 1-sec pause at bottom before next rep.</span> Medial delt isolation — creates visible shoulder width. No swinging.</div>
+                <div class="band-swap">↗ Upgrade: banded lateral raise once bands arrive — superior tension at peak</div>
+              </td>
+              <td><div class="stat-sets">15 reps</div></td>
+              <td><div class="stat-load">10 lb DBs</div></td>
+              <td><div class="stat-rest">→ S1B</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">S1B · Rear Delt DB Fly (Bench Supported)</div>
+                <div class="ex-cue">Seated, hinge forward until chest is near thighs. Arms hang, slight bend in elbow. Raise out to sides, lead with elbows. <span class="hl">Squeeze rear delts at top, 3-count lower.</span> Creates the 3D shoulder cap.</div>
+                <div class="band-swap">↗ Upgrade: banded face pull once bands arrive — more natural line of pull</div>
+              </td>
+              <td><div class="stat-sets">12 reps</div></td>
+              <td><div class="stat-load">8–10 lb DBs</div></td>
+              <td><div class="stat-rest">60 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARMS -->
+  <div class="section">
+    <div class="section-label">Arms · Bicep Peak + Tricep Long Head</div>
+    <div class="superset-block">
+      <div class="superset-block-header">Superset S2 · 3 Rounds · S2A → S2B → S2C → 75 sec rest · 3-Count Eccentric on All</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">S2A · Seated DB Curl — Long Head Emphasis</div>
+                <div class="ex-cue">Sit at edge of flat bench, slight rear lean. Let arm hang slightly behind hip at bottom — stretches the long head in a way the standing barbell curl cannot reach. <span class="hl">Squeeze 1 sec at top, 3-count lower.</span> No momentum.</div>
+              </td>
+              <td><div class="stat-sets">12 reps</div></td>
+              <td><div class="stat-load">15–20 lb DBs</div></td>
+              <td><div class="stat-rest">→ S2B</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">S2B · Sandbag Overhead Tricep Extension</div>
+                <div class="ex-cue">Standing. Both hands grip sandbag behind head, elbows in tight. <span class="hl">Full lockout at top, 1-sec squeeze.</span> 3-count lower. Sandbag instability increases long head demand vs. the KB on Day B — this is your progression bridge.</div>
+              </td>
+              <td><div class="stat-sets">15 reps</div></td>
+              <td><div class="stat-load">25 lb sandbag</div></td>
+              <td><div class="stat-rest">→ S2C</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">S2C · DB Hammer Curl</div>
+                <div class="ex-cue">Neutral grip. Hits brachialis and brachioradialis — pushes the bicep up and creates forearm definition. <span class="hl">3-count lower, no swing.</span> Alternate arms or bilateral.</div>
+                <div class="band-swap">↗ Upgrade: banded hammer curl once bands arrive — constant tension through full ROM</div>
+              </td>
+              <td><div class="stat-sets">10 reps</div></td>
+              <td><div class="stat-load">15–20 lb DBs</div></td>
+              <td><div class="stat-rest">75 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <table class="ex-table">
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">Bench Tricep Dip</div>
+            <div class="ex-cue">Hands on bench edge behind you, feet extended. Lower until upper arms are parallel — <span class="hl">3-count lower, full lockout at top.</span> Elevate feet on KB or sandbag to increase difficulty.</div>
+          </td>
+          <td><div class="stat-sets">3 × 15</div></td>
+          <td><div class="stat-load">Bodyweight</div></td>
+          <td><div class="stat-rest">60 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CORE -->
+  <div class="section">
+    <div class="section-label">Core · Anti-Rotation + Lateral Definition</div>
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets × Reps</th>
+          <th>Load</th>
+          <th>Rest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="ex-name">KB Suitcase Carry</div>
+            <div class="ex-cue">One hand, walk 20 steps, switch. <span class="hl">Stay tall — do not lean toward the weight.</span> Obliques and QL working isometrically to resist lateral bend. Right side first — hip asymmetry awareness. This is the lateral waist definition exercise.</div>
+            <div class="hip-note">↳ Right side first every set</div>
+          </td>
+          <td><div class="stat-sets">3 × 20 steps</div></td>
+          <td><div class="stat-load">35 lb KB</div></td>
+          <td><div class="stat-rest">45 sec</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="superset-block">
+      <div class="superset-block-header">Superset S3 · 3 Rounds · S3A → S3B → 60 sec rest</div>
+      <div class="superset-inner">
+        <table class="ex-table">
+          <tbody>
+            <tr>
+              <td>
+                <div class="ex-name">S3A · Dead Bug</div>
+                <div class="ex-cue">Opposite arm and leg extend slowly to floor — <span class="hl">4-count lower, 1-sec pause before return.</span> Low back stays pinned the entire time. Anti-extension core — trains deep stabilizers without hip flexor dominance.</div>
+              </td>
+              <td><div class="stat-sets">8 each side</div></td>
+              <td><div class="stat-load">Bodyweight</div></td>
+              <td><div class="stat-rest">→ S3B</div></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ex-name">S3B · KB Plank Pull-Through</div>
+                <div class="ex-cue">High plank. 25 lb KB to one side. Reach under, drag KB to opposite side. <span class="hl">Hips stay square — resist rotation.</span> Anti-rotation under load develops the oblique shelf. Alternate sides each rep.</div>
+              </td>
+              <td><div class="stat-sets">8 each side</div></td>
+              <td><div class="stat-load">25 lb KB</div></td>
+              <td><div class="stat-rest">60 sec</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOVERY -->
+  <div class="section">
+    <div class="section-label">Post-Session Recovery · Non-Negotiable</div>
+    <div class="recovery-box">
+      <div class="recovery-icon">🧘</div>
+      <div>
+        <div class="recovery-title">Restorative Yoga + Pranayama · 10 min</div>
+        <div class="recovery-text">Thread the needle, supported fish, eagle arms seated. 4-7-8 breath or box breathing. Day C's lower systemic load means your nervous system has more capacity to absorb the parasympathetic shift — use it.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     REFERENCE PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-ref">
+<div class="container">
+
+  <div style="margin-bottom:40px;">
+    <div class="hero-eyebrow" style="margin-bottom:12px;">Reference</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.04em;">Program Guide</div>
+  </div>
+
+  <!-- OURA PROTOCOL -->
+  <div class="section">
+    <div class="section-label">Oura Readiness Protocol · All Three Days</div>
+    <div class="oura-grid">
+      <div class="oura-cell">
+        <div class="oura-score green">85+</div>
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Full Send</div>
+        <div class="oura-action">Execute the session exactly as written. This is your day to add load — if all sets felt RPE 7 or below last session, add 5 lb to barbells. Progressive overload happens on green days.</div>
+      </div>
+      <div class="oura-cell">
+        <div class="oura-score yellow">70–84</div>
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Modified</div>
+        <div class="oura-action">Primary compounds only. Skip supersets and finishers. Keep post-session restorative. Don't add load — maintain what you built. Still a productive session.</div>
+      </div>
+      <div class="oura-cell">
+        <div class="oura-score red">&lt;70</div>
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Recovery Day</div>
+        <div class="oura-action">No lifting. 20–30 min easy walk + 20 min restorative yoga. Your nervous system is under load — adding more suppresses the HRV you're trying to build. Rest is the training today.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULING RULES -->
+  <div class="section">
+    <div class="section-label">Flexible Scheduling Rules</div>
+    <div class="ref-card" style="max-width:100%;">
+      <ul class="ref-list">
+        <li>Never lift two days back to back — any combination of A, B, or C</li>
+        <li>Day A, B, and C can run in any order based on your week</li>
+        <li>A heavy BBC upper body day counts as a buffer — don't run Day B or C the following day</li>
+        <li>If you only get two sessions in a week, prioritize A and B — Day C is the first to drop</li>
+        <li>Oura Readiness governs load on all three days — no exceptions</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 12 WEEK PROGRESSION -->
+  <div class="section">
+    <div class="section-label">12-Week Progression</div>
+    <div class="prog-phases">
+      <div class="phase phase-1">
+        <div class="phase-weeks">WKS 1–4</div>
+        <div>
+          <div class="phase-name">Foundation</div>
+          <div class="phase-desc">Learn your numbers. Keep RPE at 7/10 maximum. Add 5 lb to barbell lifts only when all sets feel like RPE 7 or below with 1–2 reps in reserve. Log every session. Check Oura daily. Prioritize the post-session restorative — this is where you build your HRV baseline. Goal: Readiness consistently above 75.</div>
+        </div>
+      </div>
+      <div class="phase phase-2">
+        <div class="phase-weeks">WKS 5–8</div>
+        <div>
+          <div class="phase-name">Build</div>
+          <div class="phase-desc">Add tempo work — 3-count eccentric, 1-sec pause, 1-count concentric on hip thrusts and curls. Increase barbell loads 5–10 lb where form is solid. Introduce drop sets on the B1/B2 superset final round and S2 on Day C. Goal: Oura Readiness averaging 80+ consistently.</div>
+        </div>
+      </div>
+      <div class="phase phase-3">
+        <div class="phase-weeks">WKS 9–12</div>
+        <div>
+          <div class="phase-name">Define</div>
+          <div class="phase-desc">Reduce rest periods to 60 sec on all accessory work. Full drop sets on hip thrusts, curls, lateral raises. Test near-max on barbell hip thrust and RDL — this is your benchmark. Re-scan InBody at week 12 to measure skeletal muscle change and assess asymmetry progress.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPLEMENT STACK -->
+  <div class="section">
+    <div class="section-label">Supplement Stack</div>
+    <div class="ref-card" style="max-width:100%;">
+      <table class="supp-table">
+        <tbody>
+          <tr><td>Ascent Native Whey</td><td>Post-workout. 30–40g per serve. Don't rely on appetite — GLP-1 suppresses hunger. Protein is mechanical, not intuitive.</td></tr>
+          <tr><td>Naked Casein</td><td>Pre-bed via Ninja Creami. Eat immediately after you get home — don't wait until 10–11pm.</td></tr>
+          <tr><td>Creatine Monohydrate</td><td>3–5g in morning lemon water. Mix and drink immediately — citric acid degrades creatine if it sits. On pre-workout days: 2–3g only (pre-workout has 1g).</td></tr>
+          <tr><td>Moon Juice Magnesi-Om</td><td>1 tsp in water nightly. Add tart cherry juice for Sleepy Girl Mocktail — natural melatonin support.</td></tr>
+          <tr><td>Naked Energy Pre-Workout</td><td>Weekend morning workouts only. 200mg caffeine — do not use before evening sessions.</td></tr>
+          <tr><td>Vital Proteins Collagen</td><td>Daily. Connective tissue support relevant to hip repair history.</td></tr>
+          <tr><td>Rx Cholecalciferol (D3)</td><td>As prescribed. Do not add OTC Vitamin D — you're covered.</td></tr>
+          <tr><td>Omega-3 Fish Oil</td><td>1–2g EPA+DHA daily with food. Discuss with prescribing physician given Effexor — complementary, not conflicting, but worth flagging. Not yet confirmed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="section">
+    <div class="section-label">Garage Gym Equipment</div>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-card-title">Barbells + Plates</div>
+        <ul class="ref-list">
+          <li><strong>33 lb barbell</strong>With plates — lighter press work</li>
+          <li><strong>45 lb barbell</strong>With plates — primary loading</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">Kettlebells</div>
+        <ul class="ref-list">
+          <li><strong>25 lb</strong>RDL warmup, pull-throughs, carries</li>
+          <li><strong>35 lb</strong>Sumo DL, suitcase carry</li>
+          <li><strong>53 lb</strong>Heavy sumo option (readiness dependent)</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">Dumbbells + Other</div>
+        <ul class="ref-list">
+          <li><strong>8–20 lb set</strong>All isolation work</li>
+          <li><strong>25 lb sandbag</strong>Day C tricep extension</li>
+          <li><strong>14 lb wall ball</strong>Day A finisher</li>
+          <li><strong>Flat bench</strong>Press, dips, split squat, seated curls</li>
+          <li><strong>Squat rack</strong>Barbell work</li>
+          <li><strong>Abmat</strong>Glute bridge burnout</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">Bands (Order Soon)</div>
+        <ul class="ref-list">
+          <li><strong>Loop bands</strong>Light / medium / heavy — lateral raises, pull-aparts</li>
+          <li><strong>Handled bands</strong>Face pulls, hammer curls, tricep pushdowns</li>
+          <li><strong>Recommended</strong>Fit Simplify loop set + handled set</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div style="font-size:12px;color:var(--muted);">Built for Maegan · June 2026 · InBody + Oura + CF-L1 + 200HR RYT</div>
+    <div style="font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;">Not Medical Advice</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+  function showDay(day) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('page-' + day).classList.add('active');
+    document.querySelector('[data-day="' + day + '"]').classList.add('active');
+    document.getElementById('hero').style.display = day === 'A' ? 'block' : 'none';
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
